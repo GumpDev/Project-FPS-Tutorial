@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{5D67141F-F0F6-4E78-CAB3-CFDB65523A86}</ProjectGuid>
+    <ProjectGuid>{B3D9896E-52F3-DFD2-17F0-E8D7EE2C47A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -74,12 +74,11 @@
     <Compile Include="Assets\Scripts\MultiplayerManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
-    <None Include="Assets\modern-weapons\README.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>F:/FPS Sesson 2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>F:/FPS Sesson 2/Project-FPS-Tutorial/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>F:/FPS Sesson 2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>F:/FPS Sesson 2/Project-FPS-Tutorial/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
