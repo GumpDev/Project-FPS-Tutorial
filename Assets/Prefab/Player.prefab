@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4624944930518326}
   - component: {fileID: 20369385723008576}
   - component: {fileID: 81271633114714640}
+  - component: {fileID: 114637149734139852}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -198,6 +199,7 @@ GameObject:
   - component: {fileID: 54552511703418000}
   - component: {fileID: 114167068935492732}
   - component: {fileID: 148270717438411856}
+  - component: {fileID: 114918383176695866}
   m_Layer: 0
   m_Name: PlayerControl
   m_TagString: Untagged
@@ -1379,6 +1381,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114637149734139852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1278749815737312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: f264f7d1455474743bef8a9e806d0369, type: 2}
 --- !u!114 &114671118122272640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1433,6 +1447,7 @@ MonoBehaviour:
   effectFire: {fileID: 198636551804574214}
   effectEject: {fileID: 198934564647742274}
   ammoTxt: {fileID: 114316295396908900}
+  fireButton: {fileID: 0}
 --- !u!114 &114732429630368464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1555,6 +1570,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplyDamage: 1
   pc: {fileID: 114167068935492732}
+--- !u!114 &114918383176695866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1456824788750014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ada682e0dc0a747a4c1afafadfde69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 20369385723008576}
+  time: 10
 --- !u!114 &114983480001331210
 MonoBehaviour:
   m_ObjectHideFlags: 1
