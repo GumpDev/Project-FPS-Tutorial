@@ -1,10 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public bool enableMouse;
     [Header("PlayerConfig")]
@@ -30,7 +31,8 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector]
     public NetworkView nv;
 
-	void Start () {
+    void Start()
+    {
         nv = GetComponent<NetworkView>();
         if (nv.isMine)
         {
@@ -45,7 +47,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-	void Update () {
+    void Update()
+    {
         model.transform.position = Vector3.LerpUnclamped(model.transform.position, transform.position, 10 * Time.deltaTime);
         model.transform.rotation = Quaternion.LerpUnclamped(model.transform.rotation, transform.rotation, 10 * Time.deltaTime);
         if (nv.isMine)
@@ -53,18 +56,12 @@ public class PlayerController : MonoBehaviour {
             #region Canvas
             lifeSlider.value = Life;
             #endregion
+
             #region Moviment
             float _xMov = Input.GetAxisRaw("Horizontal");
             float _yMov = Input.GetAxisRaw("Vertical");
 
-            if (Input.GetButton("Run") == true && _xMov == 0 && _yMov == 1)
-            {
-                realSpeed = RunSpeed;
-            }
-            else
-            {
-                realSpeed = speed;
-            }
+            realSpeed = (Input.GetButton("Run") == true && _xMov == 0 && _yMov == 1) ? RunSpeed : speed;
 
             Vector3 _MoveHorizontal = transform.right * _xMov;
             Vector3 _MoveVertical = transform.forward * _yMov;
@@ -72,6 +69,7 @@ public class PlayerController : MonoBehaviour {
             velocity = (_MoveHorizontal + _MoveVertical).normalized * realSpeed;
 
             #endregion
+
             #region Rotation
             float _yMouse = Input.GetAxisRaw("Mouse X");
             rotation = new Vector3(0, _yMouse, 0) * sensibility;
@@ -79,30 +77,22 @@ public class PlayerController : MonoBehaviour {
             float _xMouse = Input.GetAxisRaw("Mouse Y");
             camRotation = new Vector3(_xMouse, 0, 0) * sensibility;
             #endregion
+
             #region enableMouse
-            if (enableMouse)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
+            Cursor.lockState = (enableMouse ? CursorLockMode.Locked : CursorLockMode.None);
+            Cursor.visible = !enableMouse;
             #endregion
-        }
-        if(transform.position.y < -20)
-        {
-            remLife(1);
-            nv.RPC("remLifeRPC", RPCMode.All, 1);
+
+            if (transform.position.y < -20)
+                nv.RPC("remLifeRPC", RPCMode.All, 1);
         }
     }
 
     public void remLife(int i)
     {
         Life -= i;
-        if (Life <= 0)
+
+        if (Life <= 0 && nv.isMine)
             die();
     }
 
@@ -144,7 +134,7 @@ public class PlayerController : MonoBehaviour {
     {
         rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
 
-        if(cam != null)
+        if (cam != null)
         {
             rotCam += camRotation.x;
             rotCam = Mathf.Clamp(rotCam, -80, 80);
@@ -156,15 +146,8 @@ public class PlayerController : MonoBehaviour {
     [RPC]
     public void respawn(bool b)
     {
-        if (b)
-        {
-            model.SetActive(true);
-            Life = 100;
-        }
-        else
-        {
-            model.SetActive(false);
-        }
+        model.SetActive(b);
+        Life = (b ? 100 : Life);
     }
 
     [RPC]
